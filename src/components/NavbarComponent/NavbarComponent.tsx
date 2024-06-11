@@ -4,7 +4,7 @@ import "./NavbarComponent.scss";
 import Avatar from "../AvatarComponent/Avatar";
 import Image from "next/image";
 import Home from "@public/assets/icons/Home.png";
-import Squares from "@public/assets/icons/Squares.png";
+import Squares from "@public/assets/icons/squares.png";
 import ChatIcon from "@public/assets/icons/wpf_chat.png";
 import CameraIcon from "@public/assets/icons/camera.png";
 import SettingsIcon from "@public/assets/icons/Group (1).png";
