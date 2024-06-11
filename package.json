@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "postinstall": "npx prisma generate",
+    "vercel-build": "prisma generate && prisma migrate deploy && next build",
+    "prisma:generate": "prisma generate",
     "dev": "next dev",
-    "build": "next build && postinstall",
+    "build": "next build ",
     "start": "next start",
     "lint": "next lint",
     "tsc": "tsc"
