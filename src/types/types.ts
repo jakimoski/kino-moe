@@ -173,3 +173,13 @@ export type MovieType = {
   views: number;
   createdAt: Date;
 };
+
+export type UserPost = {
+  id: number;
+  userId: number;
+  createdAt: Date;
+  title: string;
+  body: string;
+  likes: number;
+  dislikes: number;
+};

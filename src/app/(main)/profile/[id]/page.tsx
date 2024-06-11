@@ -9,7 +9,7 @@ import { useUserData } from "@/hooks/useUserData";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/auth";
 import ProfileButtons from "@/components/ProfileButtonsComponent/ProfileButtons";
-import { CommentType, PostType } from "@/types/types";
+import { UserPost } from "@/types/types";
 
 export default async function ProfilePage({
   params,
@@ -25,7 +25,7 @@ export default async function ProfilePage({
 
   const user = await getUser(parseInt(id));
 
-  const lastTwoComments = user?.Post?.slice(-2);
+  const lastTwoComments = user?.Post?.slice(-2) as UserPost[];
 
   const { movies } = await useGetData();
   return (
