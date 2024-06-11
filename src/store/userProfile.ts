@@ -1,5 +1,3 @@
-import { TUser } from "@/types/types";
-import { StaticImageData } from "next/image";
 import { create } from "zustand";
 
 type TUserData = {
