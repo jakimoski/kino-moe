@@ -1,0 +1,180 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       Int
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id                      Int         @id @default(autoincrement())
+  email                   String      @unique
+  password                String
+  userName                String?
+  image                   String?
+  type                    String      @default("viewer")
+  bio                     String?
+  cultures                String[]
+  interests               String[]
+  preferences             String[]
+  recommendations         String[]
+  showMeAround            Boolean     @default(false)
+  accountType             String      @default("free")
+  privacy                 String      @default("public")
+  notifications           String[]
+  subscription_expires_at DateTime?
+  subscription_started_at DateTime?
+  createdAt               DateTime    @default(now())
+  comments                Comment[]
+  sessions                Session[]
+  watchLists              WatchList[]
+  followers               Follow[]    @relation("followers")
+  following               Follow[]    @relation("following")
+  friends                 Friend[]    @relation("friends")
+  friend                  Friend?
+  Post                    Post[]
+  Reply                   Reply[]
+}
+
+model Follow {
+  id          Int      @id @default(autoincrement())
+  followerId  Int
+  followingId Int
+  createdAt   DateTime @default(now())
+
+  follower  User @relation("followers", fields: [followerId], references: [id])
+  following User @relation("following", fields: [followingId], references: [id])
+
+  @@unique([followerId, followingId])
+}
+
+model Friend {
+  id       Int      @id @default(autoincrement())
+  userId   Int
+  friendId Int      @unique
+  addedAt  DateTime @default(now())
+  friend   User     @relation(fields: [friendId], references: [id])
+  friends  User[]   @relation("friends")
+
+  @@unique([userId, friendId])
+}
+
+model Comment {
+  id             Int      @id @default(autoincrement())
+  content        String
+  userId         Int
+  createdAt      DateTime @default(now())
+  movieId        Int?
+  type           String //movie or post
+  movieTimeStamp String?
+  postId         Int
+  likes          Int      @default(0)
+  dislikes       Int      @default(0)
+  post           Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  movie          Movie?   @relation(fields: [movieId], references: [id])
+  user           User     @relation(fields: [userId], references: [id])
+  Reply          Reply[]
+}
+
+model Artist {
+  id       Int      @id @default(autoincrement())
+  name     String
+  bio      String
+  imageSrc String
+  awards   String[]
+}
+
+model Movie {
+  id             Int         @id
+  title          String
+  type           String
+  posterImage    String
+  bannerImage    String?
+  videoSrc       String
+  trailer        String?
+  genres         String[]
+  duration       Float?
+  releaseDate    String?
+  storyline      String
+  description    String
+  actors         String[]
+  directors      String[]
+  awards         String[]    @default([])
+  writers        String[]
+  producers      String[]
+  cinematography String[]
+  costumeDesign  String[]
+  editing        String[]
+  views          Int         @default(0)
+  createdAt      DateTime    @default(now())
+  comments       Comment[]
+  WatchLists     WatchList[]
+}
+
+model WatchList {
+  id      String @id @default(uuid())
+  userId  Int
+  movieId Int?
+  Movie   Movie? @relation(fields: [movieId], references: [id])
+  user    User   @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+}
+
+model WatchedMovies {
+  id      String @id @default(uuid())
+  userId  Int
+  movieId Int?
+
+  @@index([userId])
+  @@index([movieId])
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Post {
+  id        Int       @id @default(autoincrement())
+  userId    Int
+  createdAt DateTime  @default(now())
+  title     String
+  body      String
+  likes     Int       @default(0)
+  dislikes  Int       @default(0)
+  comments  Comment[]
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Reply {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  cretedAt  DateTime @default(now())
+  body      String
+  likes     Int      @default(0)
+  dislikes  Int      @default(0)
+  commentId Int
+  user      User     @relation(fields: [userId], references: [id])
+  comment   Comment  @relation(fields: [commentId], references: [id])
+}
