@@ -7,7 +7,7 @@ import SmallCommentComponent from "@/components/SmallCommentComponent/SmallComme
 import CommunitySearch from "@/components/CommunitySerachComponent/ComumunitySearch";
 import { usePost } from "@/hooks/usePost";
 import ShowMoreBtn from "@/components/ShowMoreBtn/ShowMoreBtn";
-import { Post, TPost } from "@/types/types";
+import { PostType } from "@/types/types";
 
 export const metadata: Metadata = {
   title: "KinoMoe - Community ",
@@ -36,7 +36,7 @@ export default async function CommunityPage({
     take = 10;
   }
   const posts = await showMorePosts(take, query, order);
-  const newPosts: Post[] = posts.slice(0, 2);
+  const newPosts: PostType[] = posts.slice(0, 2);
 
   const postsLength = posts.length;
 
