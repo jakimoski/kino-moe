@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import "./Avatar.scss";
+import "./avatar.scss";
 import Placeholder from "@public/assets/icons/mingcute_user-4-line.png";
 
 const Avatar = ({ image }: { image?: string }) => {

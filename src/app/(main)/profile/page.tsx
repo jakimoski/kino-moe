@@ -12,6 +12,7 @@ import { useGetData } from "@/hooks/useGetData";
 import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth/next";
 import { useUserData } from "@/hooks/useUserData";
+import { CommentType } from "@/types/types";
 
 export default async function ProfilePage() {
   const { movies } = await useGetData();
@@ -20,7 +21,7 @@ export default async function ProfilePage() {
 
   const user = await getUserByEmail(session?.user?.email as string);
 
-  const lastTwoComments = user?.Post?.slice(-2);
+  const lastTwoComments: CommentType[] = user?.Post?.slice(-2);
 
   return (
     <main>
