@@ -1,0 +1,23 @@
+@use "@styles/abstracts" as *;
+@use "sass:math";
+
+.small-comments {
+  margin-top: 1rem;
+  padding: rem-calc(10);
+  background-color: $color-black;
+  border-radius: rem-calc(10);
+  width: 100%;
+  &__user {
+    display: flex;
+    gap: 1rem;
+    width: fit-content;
+    align-items: center;
+    @include screenSize(tablet) {
+      gap: 0.5rem;
+    }
+  }
+  p {
+    width: fit-content;
+    line-height: 1.5;
+  }
+}

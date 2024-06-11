@@ -1,0 +1,38 @@
+@use "@styles/abstracts/" as *;
+@use "sass:math";
+
+.artists-overview {
+  padding: 2rem 2rem 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  &__image {
+    max-width: 20%;
+  }
+
+  &__content {
+    width: 70%;
+    text-align: center;
+  }
+
+  &__name {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+
+  &__bio {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  &__info {
+    padding: 0 2rem 2rem 2rem;
+
+    ul {
+      padding: 0;
+      margin: 0;
+      margin-left: 1rem;
+    }
+  }
+}

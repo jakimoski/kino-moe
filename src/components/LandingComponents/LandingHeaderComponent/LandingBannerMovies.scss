@@ -1,0 +1,71 @@
+@use "@styles/abstracts/" as *;
+@use "sass:math";
+
+.banner-movies {
+  border-radius: rem-calc(10);
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: rem-calc(20);
+  margin-top: rem-calc(50);
+  margin-bottom: rem-calc(150);
+  width: 95%;
+  margin-inline: auto;
+  @include screenSize(tablet) {
+    width: 100%;
+    gap: 0.2rem;
+    padding: rem-calc(5);
+  }
+  &-img {
+    box-shadow: 0px 4px 4px 0px #00000040;
+    max-width: 12%;
+    transition: all 0.3s ease-in-out;
+    -webkit-box-reflect: below 0px
+      linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.3),
+        10%,
+        rgba(11, 21, 27, 0.1) 30%,
+        rgba(11, 21, 27, 0) 50%
+      );
+
+    will-change: transform;
+    border-radius: 10px;
+
+    &:nth-child(2),
+    &:nth-last-child(2) {
+      max-width: 13%;
+    }
+    &:nth-child(3),
+    &:nth-last-child(3) {
+      max-width: 14%;
+    }
+    &:nth-child(4) {
+      max-width: 16%;
+    }
+
+    @include screenSize(tablet) {
+      &:nth-child(1),
+      &:nth-last-child(1) {
+        display: none;
+      }
+      &:nth-child(2),
+      &:nth-last-child(2) {
+        max-width: 18%;
+      }
+      &:nth-child(3),
+      &:nth-last-child(3) {
+        max-width: 20%;
+      }
+      &:nth-child(4) {
+        max-width: 22%;
+      }
+    }
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}

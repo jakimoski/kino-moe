@@ -1,0 +1,139 @@
+@use "@styles/abstracts" as *;
+@use "sass:math";
+
+.login-form {
+  width: 80%;
+  color: $color-white;
+  text-align: center;
+
+  &__social {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    margin-block: 1rem;
+    text-align: center;
+  }
+
+  &__link {
+    color: $color-white;
+    font-size: 1rem;
+    text-decoration: none;
+    display: inline-block;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    &::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 1px;
+      scale: 0 0;
+      background-color: $color-white;
+      transition: scale 0.3s;
+    }
+    &:hover::after {
+      scale: 1 1;
+    }
+  }
+
+  &__logo {
+    display: none;
+    @include screenSize(tablet) {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-block: 1rem;
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    position: relative;
+    margin-bottom: 1.8rem;
+    input:-internal-autofill-selected {
+      background: $background-primary !important;
+      color: $color-white !important;
+      appearance: none;
+    }
+  }
+  &__input {
+    width: 100%;
+    position: relative;
+    padding: 0.5rem 1rem;
+    background-color: transparent;
+    border-radius: rem-calc(30);
+    font-size: 1rem;
+    color: $color-white;
+    border: rem-calc(0.1) solid rgba(255, 255, 255, 0.4);
+    &:focus-visible {
+      outline: none;
+    }
+    &:focus + .form__label {
+      top: 0%;
+      font-size: 0.8rem;
+      background-color: $background-primary;
+    }
+  }
+  &__label {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    padding: 0px 4px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.4);
+    pointer-events: none;
+    transition: 0.5s;
+
+    &--active {
+      top: 0%;
+      font-size: 0.8rem;
+      background-color: $background-primary;
+    }
+  }
+
+  &__error {
+    display: none;
+  }
+  &__error--active {
+    display: block;
+    position: absolute;
+    left: 1rem;
+    top: 1.6rem;
+    color: $color-red;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+  }
+
+  &__divider {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    margin: 2rem auto;
+    &::after {
+      content: "";
+      width: 100%;
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    &::before {
+      content: "or";
+      font-size: 14px;
+      position: absolute;
+      padding: rem-calc(5);
+      background-color: $background-primary;
+    }
+  }
+}

@@ -1,0 +1,73 @@
+@use "../abstracts" as *;
+@use "sass:math";
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 100%;
+
+  @include screenSize(big-desktop) {
+    font-size: 125%; // Big Desktop sizings (1800PX +)
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  background-color: $background-primary;
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+  margin-top: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.swiper-slide {
+  height: auto !important;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 1px 1px 8px rgba(0, 0, 0, 0.8);
+  background-color: $background-tertiary;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: silver;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: silver;
+}

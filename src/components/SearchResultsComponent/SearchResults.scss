@@ -1,0 +1,23 @@
+@use "@styles/abstracts" as *;
+@use "sass:math";
+
+.search-results {
+  padding-block: 1rem;
+  &__title {
+    font-style: italic;
+    font-weight: 300;
+  }
+}
+
+.similar-results {
+  &__wrapper {
+    display: grid;
+    padding-right: 3rem;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+
+    @include screenSize(laptop) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}

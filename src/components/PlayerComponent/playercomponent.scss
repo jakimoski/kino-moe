@@ -1,0 +1,213 @@
+@use "../../styles/abstracts" as *;
+@use "sass:math";
+
+.video-player {
+  width: 100%;
+  height: 100svh;
+  padding: 0;
+  margin: 0;
+  color: $color-white;
+  overflow: hidden;
+  &__wrapper {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    max-height: 100svh;
+
+    & > video {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 16/9;
+    }
+  }
+
+  &__back-btn {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 100;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+  }
+
+  &__info-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 100;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+  }
+
+  &__player {
+    width: 100%;
+    height: 100svh;
+  }
+
+  &__main-controls-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: rem-calc(20) rem-calc(30);
+    display: flex;
+
+    flex-direction: column;
+    z-index: 2147483647;
+  }
+
+  &__top-controls-wrapper {
+    position: relative;
+    width: 100%;
+    z-index: 0;
+  }
+
+  &__seek-bar {
+    z-index: 3;
+    position: relative;
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent !important;
+    cursor: pointer;
+    accent-color: $color-red;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__bottom-controls-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__play {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__settings {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  &__comments {
+    position: relative;
+    width: max-content;
+
+    &__box {
+      position: absolute;
+      right: 120%;
+      bottom: 6.5rem;
+      width: max-content;
+    }
+  }
+
+  &__volume {
+    position: relative;
+
+    input[type="range"] {
+      accent-color: $color-green-dark;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    input[type="range"]:focus {
+      outline: none;
+    }
+
+    input[type="range"]::-webkit-slider-runnable-track {
+      border-radius: 0.5rem;
+      height: 0.7rem;
+      border: 1px solid rgba(0, 0, 0, 0.5);
+      box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.23);
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none; /* Override default look */
+      appearance: none;
+      margin-top: -4px; /* Centers thumb on the track */
+
+      /*custom styles*/
+      background-color: $color-white;
+      height: 1.3rem;
+      width: 1.3rem;
+      border-radius: 50%;
+      outline: 2px solid $color-white;
+    }
+
+    input[type="range"]:active::-webkit-slider-thumb {
+      border: 1px solid $color-white;
+      outline: 3px solid $color-white;
+      outline-offset: 0.125rem;
+    }
+
+    /******** Firefox styles ********/
+
+    input[type="range"]::-moz-range-track {
+      background-color: rgba(255, 255, 255, 0.5);
+      border-radius: 0.5rem;
+      height: 0.5rem;
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      border: none; /*Removes extra border that FF applies*/
+      border-radius: 0; /*Removes default border-radius that FF applies*/
+
+      background-color: $color-white;
+      height: 1.2rem;
+      width: 1.2rem;
+      border-radius: 50%;
+    }
+
+    input[type="range"]:focus::-moz-range-thumb {
+      border: 1px solid $color-white;
+      outline: 3px solid $color-white;
+      outline-offset: 0.125rem;
+    }
+
+    &-input {
+      position: absolute;
+      top: -140%;
+      left: 0;
+      width: 200%;
+      height: 100%;
+      transform: rotate(-90deg) translateY(-50%);
+      cursor: pointer;
+      scale: 0;
+      &:hover {
+        scale: 1;
+      }
+    }
+    &-button {
+      background-color: transparent;
+      position: relative;
+      outline: none;
+      border: none;
+      cursor: pointer;
+      &:hover ~ .video-player__volume-input {
+        scale: 1;
+      }
+      &--muted {
+        &::after {
+          content: "";
+          position: absolute;
+          width: 100%;
+          left: 0;
+          top: 50%;
+          height: 2px;
+          background-color: $color-red;
+          transform: rotate(-45deg) translateY(-50%);
+        }
+      }
+    }
+  }
+}
+
+video::-webkit-media-controls-enclosure {
+  display: none !important;
+}

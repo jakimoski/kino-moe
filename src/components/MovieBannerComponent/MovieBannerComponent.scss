@@ -1,0 +1,21 @@
+@use "@styles/abstracts" as *;
+@use "sass:math";
+
+.movie-banner {
+  width: 100%;
+  padding-block: 5rem;
+  margin-top: -3rem;
+  position: relative;
+  border-radius: 10px;
+  z-index: 10;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  &__image {
+    max-width: 95%;
+  }
+  &__title {
+    margin-bottom: 2rem;
+    color: $color-white;
+  }
+}

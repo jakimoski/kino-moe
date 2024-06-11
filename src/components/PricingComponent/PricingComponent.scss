@@ -1,0 +1,103 @@
+@use "@styles/abstracts" as *;
+@use "sass:math";
+
+.pricing-wrapper {
+  display: flex;
+  width: 95%;
+  margin: 0 auto;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 3rem 0;
+  flex-wrap: wrap;
+}
+
+.pricing-card {
+  flex-basis: 32%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  background-color: $color-black;
+  border-radius: 15px;
+  margin-top: 2rem;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
+  @include screenSize(phone) {
+    flex-basis: 100%;
+  }
+  &__header {
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(81, 156, 60, 1) 100%
+    );
+    color: $color-white;
+    padding: 0.5rem;
+    text-align: center;
+    text-shadow: 1px 1px 1px $color-black;
+    @include title-2;
+    border-radius: 15px 15px 0 0;
+    z-index: 10;
+  }
+  &__content {
+    padding: 2rem;
+    color: $color-white;
+    min-height: 350px;
+    z-index: 10;
+    background-color: $color-black;
+    @include screenSize(tablet) {
+      padding: 0;
+      min-height: 250px;
+    }
+  }
+  &__title {
+    color: $color-green;
+    text-align: center;
+    @include title-2;
+    margin-bottom: 1rem;
+  }
+
+  &__list {
+    list-style: none;
+    margin: none;
+    padding: 0;
+
+    li {
+      font-size: rem-calc(22);
+      font-weight: 400;
+      font-family: "Lato";
+      padding: 0.5rem;
+      @include screenSize(tablet) {
+        font-size: rem-calc(18);
+      }
+    }
+  }
+
+  & button {
+    margin: 1rem;
+  }
+
+  &--target {
+    position: relative;
+    margin-top: 5rem;
+
+    &::after {
+      content: "Optimal choice";
+      position: absolute;
+      top: -60px;
+      left: 0;
+      right: 0;
+      height: 20%;
+      background-color: $color-red;
+      z-index: 0;
+      border: 1px solid black;
+      border-radius: 10px 10px 0 0;
+      text-align: center;
+      padding: 1rem;
+      color: $color-white;
+      font-size: rem-calc(24);
+      @include screenSize(tablet) {
+        font-size: rem-calc(18);
+      }
+    }
+  }
+}

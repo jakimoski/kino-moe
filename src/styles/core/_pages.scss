@@ -1,0 +1,14 @@
+@use "../abstracts" as *;
+@use "sass:math";
+
+.page {
+  background-color: $background-primary;
+  min-height: 100svh;
+}
+
+.main-page {
+  padding-left: 8rem;
+  background-color: $background-primary;
+  min-height: 100svh;
+  color: $color-white;
+}

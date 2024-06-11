@@ -1,0 +1,39 @@
+@use "@styles/abstracts" as *;
+@use "sass:math";
+
+.search-form {
+  margin: 0 auto;
+  width: fit-content;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $color-white;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  &__button {
+    padding: 0.5rem;
+  }
+
+  &__input {
+    background: none;
+    color: $color-white;
+    border: none;
+    outline: none;
+    padding: 0.5rem 1rem 0.5rem 0rem;
+    font-size: 1rem;
+
+    &::placeholder {
+      color: $color-white;
+      font-style: italic;
+    }
+
+    &:focus {
+      background: none;
+      outline: none;
+    }
+  }
+}

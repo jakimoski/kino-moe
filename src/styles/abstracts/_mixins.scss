@@ -1,0 +1,273 @@
+@use "./variables" as *;
+@use "sass:math";
+
+%section {
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: ($gutter-base * 2);
+  padding-bottom: ($gutter-base * 2);
+
+  @media (max-width: 48em) {
+    width: 98%;
+    padding-top: ($gutter-base);
+    padding-bottom: ($gutter-base);
+  }
+}
+
+%wrap {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (max-width: 48em) {
+    width: 95%;
+    padding-left: math.div($gutter-base, 2);
+    padding-right: math.div($gutter-base, 2);
+  }
+}
+
+// CENTER ABSOLUTE
+// /////////////////////
+@mixin absCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// MEDIA QUERY MANAGER
+//////////////////////
+// 0 - 480PX:      PHONE
+// 480 - 768PX:    TABLET
+// 768 - 1024PX:    LAPTOP
+// 1024 - 1920PX: IS WHERE OUR NORMAL STYLES APPLY
+// 1920PX + :      BIG DESKTOP
+
+// $BREAKPOINT ARGUMENTS CHOICES:
+// - PHONE
+// - TABLET
+// - LAPTOP
+// - BIG-DESKTOP
+
+// 1EM = 16PX
+@mixin screenSize($breakpoint) {
+  @if $breakpoint == phone {
+    @media only screen and (max-width: 30em) {
+      @content;
+    } //480px
+  }
+  @if $breakpoint == tablet {
+    @media only screen and (max-width: 48em) {
+      @content;
+    } //768px
+  }
+  @if $breakpoint == laptop {
+    @media only screen and (max-width: 64em) {
+      @content;
+    } //1024px
+  }
+  @if $breakpoint == big-desktop {
+    @media only screen and (min-width: 120em) {
+      @content;
+    } //1920px
+  }
+}
+//END OF MEDIA QUERY MANAGER
+//////////////////////
+
+// CUSTOM TYPOGRAPHY MIXINS
+///////////////////
+// FONT SIZES MAP
+$font-size-map: (
+  xl-7: rem-calc(96),
+  xl-6: rem-calc(64),
+  xl-5: rem-calc(48),
+  xl-4: rem-calc(46),
+  xl-3: rem-calc(40),
+  xl-2: rem-calc(32),
+  xl-1: rem-calc(28),
+  xl: rem-calc(24),
+  lg: rem-calc(22),
+  md: rem-calc(20),
+  sm: rem-calc(16),
+  xs: rem-calc(12),
+);
+// FONT LINE HEIGHT MAP
+$font-line-height-map: (
+  xl: 2,
+  lg: 1.6,
+  md: 1.5,
+  sm: 1.2,
+);
+// FONT WEIGHT MAP
+$font-weight-map: (
+  bold: 700,
+  semi-bold: 600,
+  regular: 400,
+  light: 300,
+);
+// FONT SIZES AND LINE HEIGHT MAP
+$font-size-line-height-map: (
+  xl-7: "sm",
+  xl-6: "sm",
+  xl-5: "sm",
+  xl-4: "md",
+  xl-3: "xl",
+  xl-2: "lg",
+  xl-1: "lg",
+  xl: "xl",
+  lg: "xl",
+  md: "xl",
+  sm: "xl",
+  xs: "xl",
+);
+// BASE TYPOGRAPHY MIXIN
+@mixin typography($size, $weight) {
+  $font-size-value: map-get($font-size-map, $size);
+  $font-weight-value: map-get($font-weight-map, $weight);
+  $line-height-size: map-get($font-size-line-height-map, $size);
+  $line-height-value: map-get($font-line-height-map, $line-height-size);
+  font-size: $font-size-value;
+  font-weight: $font-weight-value;
+  line-height: $line-height-value;
+}
+
+// Banner heading
+@mixin bannerHeading {
+  @include typography(xl-6, bold);
+  @include screenSize(laptop) {
+    @include typography(xl-5, bold);
+  }
+  @include screenSize(tablet) {
+    @include typography(xl-4, bold);
+  }
+  @include screenSize(phone) {
+    @include typography(xl-2, bold);
+  }
+}
+// Sub heading
+@mixin subHeading {
+  @include typography(xl-1, regular);
+  @include screenSize(tablet) {
+    @include typography(lg, regular);
+  }
+  @include screenSize(phone) {
+    @include typography(md, bold);
+  }
+}
+// Main headings - H1
+@mixin heading-1 {
+  @include typography(xl-6, bold);
+  @include screenSize(phone) {
+    @include typography(xl, bold);
+  }
+}
+// Main headings - H2
+@mixin heading-2 {
+  @include typography(xl-4, bold);
+  @include screenSize(phone) {
+    @include typography(xl, bold);
+  }
+}
+// Main headings - H3
+@mixin heading-3 {
+  @include typography(xl-2, bold);
+  @include screenSize(phone) {
+    @include typography(xl, bold);
+  }
+}
+// Movie title
+@mixin movie-title {
+  font-family: "Inter", sans-serif;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
+  text-transform: uppercase;
+  @include typography(xl-6, bold);
+  @include screenSize(laptop) {
+    @include typography(xl-5, bold);
+  }
+  @include screenSize(tablet) {
+    @include typography(xl-4, bold);
+  }
+  text-wrap: pretty;
+}
+
+// Title-1
+@mixin title-1 {
+  @include typography(xl-1, regular);
+  @include screenSize(tablet) {
+    @include typography(md, regular);
+  }
+  text-wrap: pretty;
+}
+
+// Title-2
+@mixin title-2 {
+  @include typography(xl-2, regular);
+  @include screenSize(laptop) {
+    @include typography(xl, regular);
+  }
+  @include screenSize(tablet) {
+    @include typography(sm, regular);
+  }
+  text-wrap: pretty;
+}
+
+// Title-3
+@mixin title-3 {
+  @include typography(xl-2, regular);
+  @include screenSize(laptop) {
+    @include typography(xl, regular);
+  }
+  @include screenSize(tablet) {
+    @include typography(sm, regular);
+  }
+  text-wrap: pretty;
+}
+
+// Title-3
+@mixin page-title {
+  @include typography(xl-5, bold);
+  @include screenSize(laptop) {
+    @include typography(xl-3, bold);
+  }
+  @include screenSize(tablet) {
+    @include typography(xl, bold);
+  }
+  text-wrap: pretty;
+}
+
+// Paragraph
+@mixin paragraph {
+  @include typography(sm, regular);
+  @include screenSize(phone) {
+    @include typography(xs, regular);
+  }
+}
+
+// Small-1{
+@mixin small-1 {
+  @include typography(md, semi-bold);
+  @include screenSize(laptop) {
+    @include typography(sm, semi-bold);
+  }
+}
+
+// Small -2
+@mixin small-2 {
+  @include typography(sm, bold);
+}
+
+// Links and buttons font styles
+@mixin link-text {
+  @include typography(lg, bold);
+  @include screenSize(laptop) {
+    @include typography(md, bold);
+  }
+  @include screenSize(tablet) {
+    @include typography(xl, bold);
+  }
+}
+
+// END OF CUSTOM TYPOGRAPHY Mixins
+///////////////////

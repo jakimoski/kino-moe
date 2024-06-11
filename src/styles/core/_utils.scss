@@ -1,0 +1,32 @@
+@use "../abstracts" as *;
+@use "sass:math";
+
+.margin-block-m {
+  margin-block: 2rem;
+}
+
+.margin-block-s {
+  margin-block: 1rem;
+}
+
+.center {
+  margin-inline: auto;
+}
+
+.center-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hide {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap; /* added line */
+  border: 0;
+}

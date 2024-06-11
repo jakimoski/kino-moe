@@ -1,0 +1,14 @@
+@use "@styles/abstracts" as *;
+@use "sass:math";
+
+.movies-slider {
+  // overflow: hidden;
+  padding-bottom: 2rem;
+  transition: all 0.3 ease;
+
+  &__title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: $color-white;
+  }
+}

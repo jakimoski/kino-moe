@@ -1,0 +1,27 @@
+@use "@styles/abstracts" as *;
+@use "sass:math";
+
+.community-search {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 1rem;
+
+  &__discus-btn {
+    padding: rem-calc(15) rem-calc(20);
+    background-color: $color-green;
+    color: $color-white;
+    border-radius: $border-radius-lg;
+    transition: all 0.3s ease;
+    margin-left: auto;
+    font-size: rem-calc(18);
+    &:hover {
+      background-color: $color-green-dark;
+    }
+  }
+}
+
+.start {
+  margin-left: auto;
+}

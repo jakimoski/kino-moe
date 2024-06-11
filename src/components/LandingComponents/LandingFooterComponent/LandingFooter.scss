@@ -1,0 +1,34 @@
+@use "@styles/abstracts/" as *;
+@use "sass:math";
+
+.landing-footer {
+  background-color: $background-primary;
+  margin-top: -2px;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+    margin: 0 auto;
+    flex-wrap: wrap-reverse;
+    text-align: center;
+    @include screenSize(phone) {
+      justify-content: center;
+    }
+  }
+  &__name {
+    color: $color-white;
+    font-size: rem-calc(24);
+    text-transform: uppercase;
+    display: inline-block;
+    margin: 0;
+    @include screenSize(tablet) {
+      font-size: rem-calc(20);
+      padding-bottom: 1rem;
+    }
+  }
+  &_logo {
+    max-width: rem-calc(250);
+  }
+}

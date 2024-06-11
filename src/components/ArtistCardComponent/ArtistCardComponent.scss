@@ -1,0 +1,68 @@
+@use "@styles/abstracts/" as *;
+@use "sass:math";
+
+.artist-card {
+  position: relative;
+  border-radius: rem-calc(50);
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(
+    180deg,
+    rgba(11, 21, 27, 1) 0%,
+    rgba(21, 40, 51, 1) 100%
+  );
+  cursor: pointer;
+
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+
+  &__title {
+    transition: all 0.3s ease-in-out;
+    padding-top: 1rem;
+  }
+
+  &__image {
+    transform: translateY(5%);
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s ease-in-out;
+
+    padding: 0;
+  }
+
+  &::after {
+    display: block;
+    content: "";
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      226deg,
+      rgba(21, 40, 51, 0.2) 0%,
+      rgba(21, 40, 51, 0.4) 40%,
+      rgba(21, 40, 51, 0.2) 42%,
+      rgba(21, 40, 51, 0) 60%
+    );
+    transform: translateY(-30%) translateX(50%);
+    will-change: transform;
+    transition: transform 0.65s cubic-bezier(0.18, 0.9, 0.58, 1);
+  }
+
+  &:hover {
+    scale: 1.02;
+    box-shadow: 15px 15px 40px rgba(0, 0, 0, 0.4);
+    .artist-card__image {
+      transform: translateY(0);
+    }
+    &::after {
+      transform: translateY(0%);
+    }
+    & .artist-card__title {
+      transform: translateY(30%);
+      text-shadow: 1px 1px 1px black;
+      z-index: 100;
+    }
+  }
+}

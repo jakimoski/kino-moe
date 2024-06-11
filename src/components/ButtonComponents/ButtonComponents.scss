@@ -1,0 +1,119 @@
+@use "@styles/abstracts/" as *;
+@use "sass:math";
+
+.btn {
+  border-radius: 10px;
+  padding: rem-calc(10) rem-calc(30);
+  border: none;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+  font-family: $font-family-primary;
+  font-size: rem-calc(28);
+  background-color: $color-green;
+  color: $color-white;
+  min-width: fit-content; //test
+
+  transition: all 0.3s ease-in-out;
+  will-change: transform;
+  @include screenSize(tablet) {
+    padding: rem-calc(8) rem-calc(20);
+    font-size: rem-calc(22);
+  }
+
+  &:hover {
+    background-color: $color-green-dark;
+    box-shadow: 4px 4px 4px #00000040;
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(1px);
+    box-shadow: none;
+  }
+
+  &--sm {
+    font-size: rem-calc(24);
+    @include screenSize(laptop) {
+      font-size: rem-calc(22);
+      padding: rem-calc(10) rem-calc(20);
+    }
+    @include screenSize(tablet) {
+      font-size: rem-calc(20);
+    }
+  }
+
+  &--form {
+    padding: 8px 24px;
+    font-size: rem-calc(20);
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    border-radius: rem-calc(50);
+  }
+
+  &--social {
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size: rem-calc(18);
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    border-radius: rem-calc(50);
+    background-color: transparent;
+    cursor: pointer;
+    color: $color-white;
+    border: rem-calc(0.1) solid rgba(255, 255, 255, 0.4);
+    outline: none;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  &__logo {
+    margin-right: auto;
+    & img {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+  &__children {
+    margin-right: auto;
+  }
+
+  &--link {
+    font-size: rem-calc(22);
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    padding: rem-calc(15) rem-calc(20);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    @include screenSize(laptop) {
+      padding: rem-calc(10) rem-calc(15);
+    }
+  }
+
+  &--icon {
+    background-color: transparent;
+    padding: 1rem;
+
+    & img {
+      min-width: 3rem;
+      min-height: 3rem;
+    }
+
+    &:hover {
+      background-color: transparent;
+      box-shadow: none;
+    }
+  }
+
+  &--icon--sm {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+}

@@ -1,0 +1,64 @@
+@use "@styles/abstracts" as *;
+@use "sass:math";
+
+.header-landing {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2rem;
+  background-image: linear-gradient(
+      0deg,
+      rgba(11, 21, 27, 1) 0%,
+      rgba(11, 21, 27, 0.8) 100%
+    ),
+    url(../../../../public/assets/backgrounds/Banner_Background.png);
+
+  &-logo {
+    max-width: 20vw;
+    padding: 0;
+    position: relative;
+    @include screenSize(tablet) {
+      max-width: 40vw;
+    }
+  }
+
+  &-text {
+    color: $color-white;
+    text-align: center;
+    margin-bottom: rem-calc(20);
+    h1 {
+      @include bannerHeading;
+      text-shadow: 1px 1px 5px rgba(11, 21, 27, 0.4);
+    }
+    h3 {
+      @include subHeading;
+    }
+  }
+
+  &-images {
+    z-index: 250;
+    height: rem-calc(250);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  &__icons {
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+    flex-wrap: wrap;
+    @include screenSize(laptop) {
+      img {
+        width: rem-calc(100);
+        height: rem-calc(100);
+      }
+    }
+  }
+}

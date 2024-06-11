@@ -1,0 +1,108 @@
+@use "@styles/abstracts" as *;
+@use "sass:math";
+
+.movies-group-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 95%;
+  margin: 0 auto;
+  padding-bottom: rem-calc(20);
+  gap: 2%;
+}
+
+.movie-group {
+  text-align: center;
+  color: $color-white;
+  flex-basis: 32%;
+  max-height: 40vh;
+  @include screenSize(tablet) {
+    flex-basis: 48%;
+  }
+  @include screenSize(phone) {
+    flex-basis: 100%;
+  }
+  h3 {
+    @include title-1;
+  }
+
+  &__block {
+    position: relative;
+    height: 50vh;
+  }
+
+  &__image {
+    position: relative;
+    width: 33%;
+    height: 30vh;
+    overflow: visible;
+    @include screenSize(laptop) {
+      height: 25vh;
+    }
+
+    & img {
+      box-shadow: 10px 0px 10px 1px rgba(0, 0, 0, 0.6);
+      border-radius: 10px;
+      border: 1px solid black;
+      transform-origin: top right;
+      will-change: transform;
+    }
+
+    &:nth-child(1) {
+      position: absolute;
+      border-radius: rem-calc(10);
+      top: 0;
+      left: 0;
+      transform: translateX(200%);
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        transform: translateY(-10px) translateX(220%);
+        z-index: 9;
+      }
+    }
+
+    &:nth-child(2) {
+      position: absolute;
+      border-radius: 10px;
+      top: 0;
+      left: 0;
+      transform: translateX(150%);
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        transform: translateY(-10px) translateX(170%);
+        z-index: 8;
+      }
+    }
+    &:nth-child(3) {
+      position: absolute;
+      border-radius: 10px;
+      top: 0;
+      left: 0;
+      transform: translateX(100%);
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        transform: translateY(-10px) translateX(120%);
+        z-index: 7;
+      }
+    }
+    &:nth-child(4) {
+      position: absolute;
+      border-radius: 10px;
+      top: 0;
+      left: 0;
+      transform: translateX(50%);
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        transform: translateY(-10px) translateX(70%);
+        z-index: 7;
+      }
+    }
+    &:nth-child(5) {
+      position: absolute;
+      border-radius: 10px;
+      top: 0;
+      left: 0;
+    }
+  }
+}

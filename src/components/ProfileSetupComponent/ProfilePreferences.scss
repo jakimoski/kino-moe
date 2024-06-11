@@ -1,0 +1,40 @@
+@use "../../styles/abstracts" as *;
+@use "sass:math";
+
+.user-preference-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem auto;
+  width: 60%;
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  &__input-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-block: 1rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid $color-white;
+  }
+  &__title {
+    @include title-1;
+    padding: 0;
+    margin: 0;
+
+    line-height: 1.5;
+  }
+  p {
+    margin: 0;
+    padding: 0;
+  }
+}

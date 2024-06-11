@@ -1,0 +1,6 @@
+@use "../abstracts" as *;
+@use "sass:math";
+
+.page {
+  background-color: $background-primary;
+}

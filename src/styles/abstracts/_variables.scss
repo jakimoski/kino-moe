@@ -1,0 +1,63 @@
+@use "sass:math";
+
+@function rem-calc($size) {
+  @return (math.div($size, 16)) * 1rem;
+}
+
+// Font settings
+$font-family-primary: "Lato", sans-serif;
+$font-family-secondary: "Poppins", sans-serif;
+
+$font-size-small: rem-calc(12);
+$font-size-base: rem-calc(16);
+$font-size-medium: rem-calc(20);
+$font-size-big: rem-calc(22);
+$font-size-bigger: rem-calc(24);
+$font-size-large: rem-calc(32);
+// Headings sizes
+$heading-size-tiny: rem-calc(16);
+$heading-size-small: rem-calc(22);
+$heading-size-base: rem-calc(24);
+$heading-size-medium: rem-calc(40);
+$heading-size-big: rem-calc(46);
+$heading-size-bigger: rem-calc(64);
+$heading-size-large: rem-calc(96);
+
+$line-height-base: 1.5;
+$line-height-small: 1;
+
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+$font-weight-base: $font-weight-normal;
+
+// Size settings
+$gutter-s: rem-calc(10);
+$gutter-m: rem-calc(20);
+$gutter-base: rem-calc(30);
+$gutter-l: rem-calc(50);
+
+// box-shadow
+$box-shadow-s: 0 2px 5px rgba(0, 0, 0, 0.1);
+$box-shadow-sm: 12 9px 7px rgba(0, 0, 0, 0.25);
+
+// Borders
+$border-sm-white: 1px solid #ffffff;
+$border-sm-black: 1px solid #000000;
+
+// Border radius
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 12px;
+$border-radius-xl: 16px;
+
+// Color settings
+$color-black: #000000;
+$color-white: #ffffff;
+$background-primary: #0b151b;
+$background-secondary: #152833;
+$background-tertiary: #1c3747;
+$background-dark: #151515;
+$color-red: #f22229;
+$color-green: #519c3c;
+$color-green-dark: #2c7b15;
+$color-purple: #a78ddd;

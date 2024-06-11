@@ -1,0 +1,11 @@
+@use "@styles/abstracts" as *;
+@use "sass:math";
+
+.artist-link {
+  color: $color-white;
+  font-size: 1rem;
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.2rem;
+  }
+}

@@ -1,0 +1,46 @@
+@use "@styles/abstracts" as *;
+@use "sass:math";
+
+.comment-form {
+  width: max-content;
+  margin: 2rem auto;
+  padding: $gutter-l;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  // gap: 1rem;
+  flex-direction: column;
+  background-color: $background-tertiary;
+  border-radius: $border-radius-lg;
+  border: $border-sm-white;
+
+  &__title {
+    border-bottom: $border-sm-white;
+    width: 100%;
+    text-align: center;
+    padding-bottom: $gutter-s;
+  }
+
+  &__error {
+    color: $color-red;
+    padding: 0;
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  &__input {
+    width: 100%;
+    padding: $gutter-s;
+    border: none;
+    outline: none;
+    background-color: $background-secondary;
+    color: $color-white;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+    margin-top: $gutter-s;
+  }
+  & button {
+    margin-top: 1rem;
+  }
+}

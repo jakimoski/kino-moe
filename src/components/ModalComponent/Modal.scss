@@ -1,0 +1,73 @@
+@use "@styles/abstracts" as *;
+@use "sass:math";
+
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.4);
+  min-height: 100svh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  min-height: 100svh;
+  z-index: 1112;
+  color: $color-white;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 90svh;
+  border-radius: 15px;
+  background-color: $background-primary;
+  z-index: 1115;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  @include screenSize(laptop) {
+    width: 85vw;
+    margin-top: 1rem;
+  }
+  @include screenSize(tablet) {
+    width: 90vw;
+    margin-top: 1rem;
+  }
+
+  &__wrapper {
+    position: relative;
+  }
+
+  &__close-btn {
+    position: absolute;
+    z-index: 1116;
+    top: 1rem;
+    right: 1rem;
+    @include screenSize(laptop) {
+      top: 3.5rem;
+      right: 2rem;
+    }
+    cursor: pointer;
+    & img {
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+}
+
+.modal__chat {
+  width: fit-content;
+  height: fit-content;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1115;
+}
