@@ -29,6 +29,7 @@ async function fetchPosts(
             postId: true,
             likes: true,
             dislikes: true,
+
             Reply: {
               select: {
                 id: true,

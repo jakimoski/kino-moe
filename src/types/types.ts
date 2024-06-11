@@ -132,7 +132,7 @@ export type CommentType = {
   content: string;
   postId: number;
   likes: number;
-  body: string;
+
   dislikes: number;
   user: UserType;
   Reply?: ReplyType[];

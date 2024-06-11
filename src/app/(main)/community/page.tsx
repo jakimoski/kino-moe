@@ -35,7 +35,7 @@ export default async function CommunityPage({
   if (!take) {
     take = 10;
   }
-  const posts = await showMorePosts(take, query, order);
+  const posts: PostType[] = await showMorePosts(take, query, order);
   const newPosts: PostType[] = posts.slice(0, 2);
 
   const postsLength = posts.length;

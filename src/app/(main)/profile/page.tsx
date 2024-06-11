@@ -21,7 +21,7 @@ export default async function ProfilePage() {
 
   const user = await getUserByEmail(session?.user?.email as string);
 
-  const lastTwoComments: CommentType[] = user?.Post?.slice(-2);
+  const lastTwoComments = user?.Post?.slice(-2);
 
   return (
     <main>
