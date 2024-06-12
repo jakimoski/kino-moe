@@ -248,7 +248,7 @@ export const headerMovies = [
     movieId: 4,
     title: "To the Hilt",
     imageSrc: "/assets/topBanner/Dobalcak.png",
-    thumbnail: "/assets/images/Do_balcak.png",
+    thumbnail: "/assets/images/Do-balcak.png",
     storyline:
       "An open-minded European woman flirts with three men and puts them through a series of tasks and events which turn out to have serious consequences.",
     description:

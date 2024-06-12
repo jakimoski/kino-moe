@@ -13,16 +13,16 @@ export async function setProfileInfo(formData: FormData) {
   saveImage(user.image, user.name);
 }
 
-export async function updateUser() {
-  await prisma.user.update({
-    where: {
-      email: "vlatko@vlatko.com",
-    },
-    data: {
-      userName: "Viola the Magnificent",
-    },
-  });
-}
+// export async function updateUser() {
+//   await prisma.user.update({
+//     where: {
+//       email: "vlatko@vlatko.com",
+//     },
+//     data: {
+//       userName: "Viola the Magnificent",
+//     },
+//   });
+// }
 
 export async function hashPassword(password: string) {
   return await hash(password, 10);

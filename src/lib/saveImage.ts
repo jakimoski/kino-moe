@@ -4,7 +4,7 @@ import path from "node:path";
 export async function saveImage(image: File, name: string) {
   const extension = image.name.split(".").pop();
   const fileName = `${name}.${extension}`;
-  const directory = path.join(process.cwd(), "public/assets/users");
+  const directory = path.join(process.cwd(), "/assets/users");
 
   // Ensure the directory exists
   if (!fs.existsSync(directory)) {
