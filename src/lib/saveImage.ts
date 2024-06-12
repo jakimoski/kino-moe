@@ -3,7 +3,8 @@ import path from "node:path";
 
 export async function saveImage(image: File, name: string) {
   const extension = image.name.split(".").pop();
-  const fileName = `${name}.${extension}`;
+  const imageName = name.replace(/@/g, ".");
+  const fileName = `${imageName}.${extension}`;
   const directory = path.join(process.cwd(), "/assets/users");
 
   // Ensure the directory exists
