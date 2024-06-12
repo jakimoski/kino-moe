@@ -60,9 +60,15 @@
     gap: 0.5rem;
     flex-basis: 45%;
   }
+
   &__box {
     flex: 1;
     height: auto;
+  }
+
+  &__pricing {
+    max-width: 90%;
+    margin: 0 auto;
   }
 
   &__checkbox {

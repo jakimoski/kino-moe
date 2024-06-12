@@ -11,8 +11,6 @@ export default async function Play({ params }: { params: { id: string } }) {
   const { getMovie } = await useGetData();
   const movie = await getMovie(Number(params.id));
 
-  console.log(movie);
-
   if (!session) {
     return redirect("/");
   }

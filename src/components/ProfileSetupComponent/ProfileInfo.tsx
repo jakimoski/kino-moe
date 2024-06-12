@@ -52,10 +52,11 @@ function ProfileInfo() {
       <section className="profile-setup__wrapper">
         <form className="profile-setup__image-form" action={setProfileInfo}>
           <div className="profile-setup__image-picker">
-            <UserProfileAvatar
-              styleClass="profile-setup__image-picker__image"
-              ProfileImage={profileImage ? profileImage : ProfileImage}
-              type={""}
+            <Image
+              src={profileImage ? profileImage : ProfileImage}
+              width={200}
+              height={200}
+              alt="profile-image"
             />
             <label htmlFor="image">
               {profileImage ? "Change Photo" : "Upload Photo"}

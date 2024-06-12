@@ -18,6 +18,9 @@
   &__title {
     transition: all 0.3s ease-in-out;
     padding-top: 1rem;
+    @include screenSize(tablet) {
+      font-size: 18px;
+    }
   }
 
   &__image {

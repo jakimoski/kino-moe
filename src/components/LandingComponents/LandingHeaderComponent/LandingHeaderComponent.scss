@@ -55,6 +55,9 @@
     margin-bottom: 5rem;
     flex-wrap: wrap;
     @include screenSize(laptop) {
+      justify-content: center;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
       img {
         width: rem-calc(100);
         height: rem-calc(100);

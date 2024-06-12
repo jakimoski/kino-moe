@@ -14,8 +14,8 @@ import icon5 from "@public/assets/icons/icon5.png";
 
 const IMAGE_WIDTH = 716;
 const IMAGE_HEIGHT = 256;
-const IMAGE_WIDTH_ICON = 200;
-const IMAGE_HEIGHT_ICON = 200;
+const IMAGE_WIDTH_ICON = 150;
+const IMAGE_HEIGHT_ICON = 150;
 
 const variants = {
   hidden: { opacity: 0, y: 100 },

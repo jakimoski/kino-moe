@@ -18,9 +18,9 @@ function CommunitySearch() {
     event.preventDefault();
 
     if (orderBy === "desc") {
-      setOrderBy("asc");
-    } else {
       setOrderBy("desc");
+    } else {
+      setOrderBy("asc");
     }
 
     const q = pathname.get("q");

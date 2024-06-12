@@ -35,11 +35,14 @@ function ChooseSubscriptionComponent() {
         <span className="profile-setup__title--step">{step}</span>How do you
         wish to engage with kinemoe?
       </h2>
-      <PricingComponent
-        handleFreeSubscription={handleFreeSubscription}
-        handlePaidSubscription={handlePaidSubscription}
-        handlePointsSubscription={handlePointsSubscription}
-      />
+      <div className="profile-setup__pricing">
+        <PricingComponent
+          handleFreeSubscription={handleFreeSubscription}
+          handlePaidSubscription={handlePaidSubscription}
+          handlePointsSubscription={handlePointsSubscription}
+        />
+      </div>
+
       <div className="profile-setup__buttons">
         <MainButtonComponent
           customStyles="btn--icon--sm"

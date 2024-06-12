@@ -16,7 +16,6 @@ export async function POST(req: Request) {
         { status: 400 }
       );
     }
-    console.log("newUser");
 
     const hashedPassword = await hash(password, 10);
 
@@ -30,8 +29,6 @@ export async function POST(req: Request) {
         image,
       },
     });
-
-    console.log(newUser);
 
     return NextResponse.json(
       { user: newUser, message: "User created successfully" },

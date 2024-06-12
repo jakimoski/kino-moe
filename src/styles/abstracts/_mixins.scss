@@ -203,7 +203,7 @@ $font-size-line-height-map: (
 
 // Title-2
 @mixin title-2 {
-  @include typography(xl-2, regular);
+  @include typography(xl-1, regular);
   @include screenSize(laptop) {
     @include typography(xl, regular);
   }
