@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import UserImage from "@public/assets/users/user1.png";
 import LikeIcon from "@public/assets/icons/LikeIcon.png";
 import DislikeIcon from "@public/assets/icons/DislikeIcon.png";
@@ -43,6 +43,7 @@ export const AccordionBody = ({
 }: AccordionItemProps) => {
   const contentEl = useRef<HTMLDivElement>(null);
   const [showModal, setShowModal] = useState(false);
+  const commentFormRef = useRef<HTMLFormElement>(null);
 
   const currentUser: TUser = JSON.parse(localStorage.getItem("user") || "{}");
 
@@ -65,6 +66,12 @@ export const AccordionBody = ({
       .update({ dislikes: newDislikes })
       .eq("id", postId);
     revalidateCommunity();
+  };
+
+  const handleCommentSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    e.currentTarget.reset();
   };
 
   return (
@@ -112,7 +119,12 @@ export const AccordionBody = ({
         }
       >
         <p className="accordion-card__post-body">{text}</p>
-        <form className="accordion-card__form" action={createReply}>
+        <form
+          ref={commentFormRef}
+          className="accordion-card__form"
+          onSubmit={(e) => handleCommentSubmit(e)}
+          action={createReply}
+        >
           <input type="hidden" name="userId" value={currentUser.id} />
           <input type="hidden" name="postId" value={postId} />
           <textarea name="content" placeholder="Leave a comment"></textarea>

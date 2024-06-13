@@ -29,6 +29,7 @@ export async function hashPassword(password: string) {
 }
 
 export const createReply = async (formData: FormData) => {
+  "use server";
   await prisma.comment.create({
     data: {
       content: formData.get("content") as string,
