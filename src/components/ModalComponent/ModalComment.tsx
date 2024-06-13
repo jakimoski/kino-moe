@@ -51,11 +51,13 @@ const ModalComment: React.FC<ModalProps> = ({
       const { error } = await supabase
         .from(`${reply ? "Reply" : "Comment"}`)
         .insert({
-          content,
+          // content,
           userId: currentUser.id,
-          type: type ?? "movie",
+          // type: type ?? "movie",
           // postId: postId ?? 1,
-          [reply ? "commentId" : "postId"]: postId,
+          [reply ? "body" : "postId"]: content,
+          [reply ? "commentId" : "content"]: postId,
+          [type ?? "type"]: type,
         });
 
       if (error) {
