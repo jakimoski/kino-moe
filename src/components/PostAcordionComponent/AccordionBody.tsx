@@ -177,7 +177,7 @@ export const AccordionBody = ({
                           <ModalComment
                             onClose={() => setShowModal(false)}
                             postId={comment.id}
-                            type="comment"
+                            reply={true}
                           ></ModalComment>,
                           document.body
                         )}
