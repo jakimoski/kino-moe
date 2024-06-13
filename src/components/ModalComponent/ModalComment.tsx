@@ -55,8 +55,8 @@ const ModalComment: React.FC<ModalProps> = ({
           userId: currentUser.id,
           // type: type ?? "movie",
           // postId: postId ?? 1,
-          [reply ? "body" : "postId"]: content,
-          [reply ? "commentId" : "content"]: postId,
+          [reply ? "body" : "content"]: content,
+          [reply ? "commentId" : "postId"]: postId,
           [type ?? "type"]: type,
         });
 

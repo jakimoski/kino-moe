@@ -141,9 +141,9 @@ export const AccordionBody = ({
             Comment Section
           </p>
           <div className="accordion-card__comment-wrapper">
-            {comments.map((comment, index) => {
+            {comments.map((comment) => {
               return (
-                <div key={index} className="accordion-card__comment">
+                <div key={comment.id} className="accordion-card__comment">
                   <div className="accordion-card__single-comment">
                     <Link href={`/profile/${comment.user?.id.toString()}`}>
                       <Image
