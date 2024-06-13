@@ -17,8 +17,9 @@ function ProfileInfo() {
   const increaseStep = useSetStep((state) => state.increaseStep);
   const decreaseStep = useSetStep((state) => state.decreaseStep);
 
-  const [profileImage, setProfileImage] = useState<StaticImageData>();
-
+  const [profileImage, setProfileImage] = useState<string | StaticImageData>();
+  const [file, setFile] = useState<File | null>(null);
+  const [inProgress, setInProgress] = useState(false);
   const [userName, setUserName] = useState("");
   const [bio, setBio] = useState("");
 
@@ -26,16 +27,14 @@ function ProfileInfo() {
     const image = e.target.files?.[0];
 
     if (!image) return;
-    const extension = image.name.split(".").pop();
-    const fileName = `/assets/users/${user?.email}.${extension}`;
 
-    setUser({ ...user, image: fileName });
     const newImage = new FileReader();
     newImage.onload = (e) => {
-      setProfileImage(e.target?.result as unknown as StaticImageData);
+      setProfileImage(e.target?.result as string | StaticImageData);
     };
 
     newImage.readAsDataURL(image);
+    setFile(e.target.files?.item(0) || null);
   };
 
   const nextStep = () => {
@@ -44,13 +43,34 @@ function ProfileInfo() {
     increaseStep();
   };
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    setInProgress(true);
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("file", file as Blob);
+
+    const response = await fetch("/api/upload", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+
+    setProfileImage(data.url);
+    setUser({ ...user, image: data.url });
+    setInProgress(false);
+
+    console.log(data.url);
+  };
+
   return (
     <>
       <h2 className="profile-setup__title">
         <span className="profile-setup__title--step">{step}</span>Setup Profile
       </h2>
       <section className="profile-setup__wrapper">
-        <form className="profile-setup__image-form" action={setProfileInfo}>
+        <form className="profile-setup__image-form" onSubmit={handleSubmit}>
           <div className="profile-setup__image-picker">
             <Image
               src={profileImage ? profileImage : ProfileImage}
@@ -71,11 +91,10 @@ function ProfileInfo() {
             />
           </div>
           <input type="hidden" name="name" value={user?.email} />
-          {profileImage ? (
-            <MainButtonComponent type="submit" customStyles="btn--link">
-              Save Photo
-            </MainButtonComponent>
-          ) : null}
+
+          <MainButtonComponent type="submit" customStyles="btn--link">
+            {inProgress ? "Uploading..." : "Upload Image"}
+          </MainButtonComponent>
         </form>
         <div className="profile-setup__info">
           <div>
