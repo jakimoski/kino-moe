@@ -160,10 +160,7 @@ export const AccordionBody = ({
                       <p className="accordion-card__comment-body__name">
                         {comment.user?.userName || comment.user?.email}
                       </p>
-                      <p>
-                        {comment.content}
-                        {comment.id.toString()}
-                      </p>
+                      <p>{comment.content}</p>
                     </div>
                     <div className="accordion-card__post-likes">
                       <button onClick={() => setShowModal(true)}>

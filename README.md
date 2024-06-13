@@ -31,6 +31,8 @@ worldwide.
 
 ![App Screenshot](./kino-moe-screenshot.jpg)
 
+## Live Preview - [KINE-MOE](https://kino-moe.vercel.app/)
+
 ## Tech Stack
 
 - **[NextJS ](https://nextjs.org/)**
