@@ -70,6 +70,10 @@ export const AccordionBody = ({
 
   const handleCommentSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    console.log(formData);
+
+    createReply(formData);
 
     e.currentTarget.reset();
   };
